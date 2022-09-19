@@ -1,0 +1,13 @@
+.header {
+    width: 100%;
+    /* background-color: #000000; */
+    background-color: #FFB997;
+}
+
+.header p.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    padding-top: 7px;
+}
