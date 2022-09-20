@@ -23,8 +23,8 @@ const View = () => {
 
     return (
         <div style={{ marginTop: "50px" }}>
-            <div className="card">
-                <div className="card-header">
+            <div className="cardA">
+                <div className="cardA-header">
                     <p>Detalhes do aluno {student.name}</p>
                 </div>
                 <div className="container">

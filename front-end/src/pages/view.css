@@ -1,18 +1,23 @@
-.card{
-    width: 30%;
+.cardA{
+    width: 60%;
     display: flex;
     flex-direction: column;
-    border: 1px solid #2C2A4A;
     align-content: center;
     margin: 0 auto;
+    box-shadow: -1px 1px 30px 2px rgba(0,0,0,0.49);
+    -webkit-box-shadow: -1px 1px 30px 2px rgba(0,0,0,0.49);
+    -moz-box-shadow: -1px 1px 30px 2px rgba(0,0,0,0.49);
+    border-radius: 20px;
 }
-.card-header{
-    height: 30%;
+.cardA-header{
+    height: 30px;
     background-color: #2C2A4A;
     color: white;
     text-align: center;
+    border-radius: 20px 20px 0 0;
+
 }
-.card-header p{
+.cardA-header p{
     font-size: 20px;
 }
 .container{

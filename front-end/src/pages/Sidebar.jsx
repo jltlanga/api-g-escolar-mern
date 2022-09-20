@@ -21,13 +21,10 @@ const Sidebar = () => {
                     {/* Links para as routas */}
                     <div className='logos-sidebar'>
                         <Link to='/' className='nav-logo'><span></span></Link>
-                        <Link to='/perfil' className='nav-link active'><img src="imgs/image 2.svg" alt="" />&nbsp;&nbsp;<span>PERFIL</span> </Link>
                         <Link to='/turmas' className='nav-link'><img src="imgs/image 3.svg" alt="" />&nbsp;&nbsp;<span>TURMAS</span> </Link>
                         <Link to='/view/:id' className='nav-link'><img src="imgs/image 4.svg" alt="" />&nbsp;&nbsp;<span>ESTUDANTES</span> </Link>
                         <Link to='/professor' className='nav-link'><img src="imgs/pngwing 1.svg" alt="" />&nbsp;&nbsp;<span>PROFESSORES</span> </Link>
-                        <Link to='/about' className='nav-link'><img id='icon-info' src="imgs/info-icon.svg" alt="" />&nbsp; &nbsp;<span>INFORMAÇÃO</span></Link>
                     </div>
-                    <Link to='/logout' className='nav-link'><img src="imgs/image 9.svg" alt="" />&nbsp;&nbsp;<span>SAIR</span> </Link>
                 </nav>
             </aside>
             {/* <h1>Content</h1> */}

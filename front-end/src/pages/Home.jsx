@@ -78,16 +78,13 @@ const Home = () => {
   return (
     <div style={{ marginTop: '50px' }}>
       {/* cria estrutura da tabela para renderizar os dados trazidos de bd */}
-      <h1>Àrea do Professor</h1>
+      <h1>Professor</h1>
       <label htmlFor='sort'>Ordernar por:</label>
       <select name='colValue' id='' className='dropdown' onChange={handleChange}>
         <option value=''>Selecione a opção</option>
         <option value='name'>Nome</option>
         <option value='email'>Email</option>
         <option value='contact'>Contato</option>
-        {/* <option value='contact'>Avaliações</option> */}
-        <option value='fees'>Média</option>
-        {/* <option value='status'>situação</option> */}
       </select>
 
       <label htmlFor="">Ordenar por situação:</label>
@@ -102,10 +99,6 @@ const Home = () => {
             <th style={{ textAlign: 'center' }}>Nome</th>
             <th style={{ textAlign: 'center' }}>Email</th>
             <th style={{ textAlign: 'center' }}>Contato</th>
-            <th style={{ textAlign: 'center' }}>Aval-3</th>
-            <th style={{ textAlign: 'center' }}>Aval-1</th>
-            <th style={{ textAlign: 'center' }}>Aval-2</th>
-            <th style={{ textAlign: 'center' }}>Média</th>
             <th style={{ textAlign: 'center' }}>Situação</th>
             {/* <th style={{ textAlign: 'center' }}>Action</th> */}
             {!sort && <th style={{ textAlign: 'center' }}>Ação</th>}
@@ -122,10 +115,6 @@ const Home = () => {
                   <td>{data[id].name}</td>
                   <td>{data[id].email}</td>
                   <td>{data[id].contact}</td>
-                  <td>{data[id].aval1}</td>
-                  <td>{data[id].aval2}</td>
-                  <td>{data[id].aval3}</td>
-                  <td>{data[id].media}</td>
                   <td>{data[id].status}</td>
                   <td>
                     <Link to={`/update/${id}`}>
@@ -155,10 +144,6 @@ const Home = () => {
                   <td>{item.name}</td>
                   <td>{item.email}</td>
                   <td>{item.contact}</td>
-                  <td>{item.aval1}</td>
-                  <td>{item.aval2}</td>
-                  <td>{item.aval3}</td>
-                  <td>{item.media}</td>
                   <td>{item.status}</td>
                 </tr>
               )
