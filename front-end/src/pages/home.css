@@ -14,7 +14,9 @@
   }
   .table-stayled th,
   .table-stayled td {
+    margin-left: 70px;
     padding: 10px 7px; /*table size*/
+    align-items: center;
   }
   
   .table-stayled tbody tr {

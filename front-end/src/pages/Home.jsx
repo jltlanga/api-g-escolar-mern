@@ -76,7 +76,7 @@ const Home = () => {
   }
 
   return (
-    <div style={{ marginTop: '50px' }}>
+    <div style={{ marginTop: '150px' }}>
       {/* cria estrutura da tabela para renderizar os dados trazidos de bd */}
       <h1>Professor</h1>
       <label htmlFor='sort'>Ordernar por:</label>
@@ -99,6 +99,10 @@ const Home = () => {
             <th style={{ textAlign: 'center' }}>Nome</th>
             <th style={{ textAlign: 'center' }}>Email</th>
             <th style={{ textAlign: 'center' }}>Contato</th>
+            <th style={{ textAlign: 'center' }}>Aval-1</th>
+            <th style={{ textAlign: 'center' }}>Aval-2</th>
+            <th style={{ textAlign: 'center' }}>Aval-3</th>
+            <th style={{ textAlign: 'center' }}>Média</th>
             <th style={{ textAlign: 'center' }}>Situação</th>
             {/* <th style={{ textAlign: 'center' }}>Action</th> */}
             {!sort && <th style={{ textAlign: 'center' }}>Ação</th>}

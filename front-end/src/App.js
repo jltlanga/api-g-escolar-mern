@@ -12,6 +12,8 @@ import Turmas from './pages/Turmas';
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 // import Cart from './pages/Cart';
 // import { CartProvider } from 'react-use-cart';
+import ListAlunos from './pages/ListAlunos';
+import TableMatriculas from './pages/Matricula';
 function App() {
   return (
     
@@ -27,7 +29,9 @@ function App() {
           <Route exact path='/professor' element={<Home />} />
           <Route path='/add' element={<AddUpdate />} />
           <Route path='/update/:id' element={<AddUpdate />} />
+          <Route path='matriculas' element={<TableMatriculas />} />
           <Route path='/view/:id' element={<View />} />
+          <Route path='/listall' element={<ListAlunos />} />
           <Route path='/search' element={<Search />} />
           
         </Routes>
