@@ -16,6 +16,10 @@
     background-color: #DABFFF;
 }
 
+.card:nth-child(even){
+    background-color: #FFB997;
+}
+
 .card-header {
     font-size: 20px;
     font-weight: bold;
@@ -28,10 +32,6 @@
 
 .card-tittle {
     padding: 10px 0px 20px 0px;
-}
-
-#cardI {
-    background-color: #FFB997;
 }
 
 .text-prof {
