@@ -12,6 +12,7 @@ import Header from './components/Header';
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 // import Cart from './pages/Cart';
 // import { CartProvider } from 'react-use-cart';
+import ListAlunos from './pages/ListAlunos';
 function App() {
   return (
     
@@ -27,6 +28,7 @@ function App() {
           <Route path='/add' element={<AddUpdate />} />
           <Route path='/update/:id' element={<AddUpdate />} />
           <Route path='/view/:id' element={<View />} />
+          <Route path='/listall' element={<ListAlunos />} />
           <Route path='/about' element={<About />} />
           <Route path='/search' element={<Search />} />
           
