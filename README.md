@@ -1,4 +1,4 @@
-# api-g-escolar-mern
+
 # GESTÃO ESCOLAR - React App
 
 ## Breve Resumo
@@ -15,7 +15,7 @@
 
 Como pode ver o projeto possui dois repositórios um de server side e outro de client side. Para ambos você precisa instalar o node_modules dentro da raíz do repositório individualmente. Tal que:
 
-* dentro da pasta frontend: estes dois comandos instala e sobe a pagina front ao servidos
+* dentro da pasta front-end: estes dois comandos instala e sobe a pagina front ao servidos
 ### `npm install`;
 ### `npm start`
 
