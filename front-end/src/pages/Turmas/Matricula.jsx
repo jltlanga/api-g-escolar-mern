@@ -23,7 +23,7 @@ function TableMatriculas() {
 
   return (
     <div className='contenedorMa'>
-            <Table responsive>
+            <Table variant="dark" responsive>
              <thead>
              <tr>
                 <th>#</th>
@@ -33,10 +33,10 @@ function TableMatriculas() {
              </tr>
              </thead>
              <tbody>
-           {matriculasData?.map(matricula => {
+           {matriculasData?.map((matricula, i) => {
             return(
-             <tr key={matricula.Id_Matricula}>
-                <td>{matricula.Id_Matricula}</td>
+             <tr key={matricula._id}>
+                <td>{i + 1}</td>
                 <td>{matricula.Estudante[0].Nome}</td>
                 <td>{matricula.Estudante[0].Email}</td>
                 <td>{matricula.Estado}</td>

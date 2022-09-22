@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react'  
-import {useParams} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 function CreateP() {
   const [nomeP, setNomeP] = useState('');
@@ -9,6 +11,7 @@ function CreateP() {
   const [turmaP, setTurmaP] = useState('');
   const [professorData, setProfessorData] = useState([]);
   const { id } = useParams();
+  const navigate = useNavigate();
   
   useEffect(() => {
     if(id){ 
@@ -36,6 +39,7 @@ function CreateP() {
     setEmailP('');
     setMateriaP('');
     setTurmaP('');
+    navigate('/professor');
   }
 
   function updateP(e) {
@@ -46,47 +50,49 @@ function CreateP() {
       Materia: materiaP,
       Turma: turmaP
       });
+      navigate('/professor');
   }
 
 
   return (
-    <div style={{ marginTop: "50px" }}>
-      <form style={{
-        margin: "auto",
-        padding: "1rem",
-        maxWidth: "450px",
-        alignItems: "center",
-      }} onSubmit={id ? updateP : postData} >
-        <label htmlFor='name'>Nome</label>
-        <input type="text" placeholder='Nome...'
-          id='name'
-          name='name'
-          value={nomeP}
+    <Form onSubmit={id ? updateP : postData}>
+      <Form.Group className="mb-3" controlId="formBasic">
+        <Form.Label>Nome</Form.Label>
+        <Form.Control 
+          value={nomeP} 
+          type="text"
+          placeholder="Nome"
           onChange={(e) => setNomeP(e.target.value)} />
+      </Form.Group> 
 
-        <label htmlFor='email'>Email</label>
-        <input type="email" placeholder='Email...'
-          name='email'
-          value={emailP}
+      <Form.Group className="mb-3" controlId="formBasic">
+        <Form.Label>Email</Form.Label>
+        <Form.Control 
+          value={emailP} 
+          type="email" 
+          placeholder="Email"
           onChange={(e) => setEmailP(e.target.value)} />
-
-        <label htmlFor='materia'>Materia</label>
-        <input type="text" placeholder='Materia responsável'
-          id='materia'
-          name='materia'
-          value={materiaP}
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasic">
+        <Form.Label>Materia</Form.Label>
+        <Form.Control 
+          value={materiaP} 
+          type="text" 
+          placeholder="Nome da Materia"
           onChange={(e) => setMateriaP(e.target.value)} />
-
-        <label htmlFor='turma'>Turma</label>
-        <input type="text" placeholder='Turma resposável'
-          id='turma'
-          name='turma'
-          value={turmaP}
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasic">
+        <Form.Label>Turma</Form.Label>
+        <Form.Control 
+          value={turmaP} 
+          type="text" 
+          placeholder="Turma"
           onChange={(e) => setTurmaP(e.target.value)} />
-
-<input type="submit" value={id ? "Atualizar" : "Salvar"}/>
-      </form>
-    </div>
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        {id ? "Atualizar" : "Salvar"}
+      </Button>
+    </Form>
   )
 }
     

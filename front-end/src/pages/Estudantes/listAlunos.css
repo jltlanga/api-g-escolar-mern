@@ -18,6 +18,17 @@
     padding: 10px 7px; /*table size*/
     align-items: center;
   }
+
+  .botao1{
+    background-color: #2C2A4A;
+    margin-left: 80%;
+    width: 10%;
+  }
+
+  .edit{
+    background-color: #FFB997;
+    color: black;
+  }
   
   .table-stayled tbody tr {
     border-bottom: 1px solid #dddddd;
@@ -31,5 +42,10 @@
   }
   .table-stayled tbody tr:last-of-type {
     border-bottom: 1px solid #2C2A4A;
+  }
+
+  form{
+    margin: 0 auto;
+    width: 50%;
   }
  

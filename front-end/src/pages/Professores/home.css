@@ -1,3 +1,8 @@
+.table-responsive {
+    width: 73%;
+    margin: 6% 0 0 23%;
+}
+
 .table-stayled{
     border-collapse: collapse;
     margin: 2% 26%;

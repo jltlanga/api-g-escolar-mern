@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { BiEditAlt } from "react-icons/bi";
+import { IoPersonAddSharp } from "react-icons/io5";
 import './home.css';
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
@@ -37,7 +41,7 @@ const getData = () => {
 
   return (
     <div className='contenedorP'>
-            <Table responsive>
+            <Table variant="dark" responsive>
              <thead>
              <tr>
                 <th>#</th>
@@ -45,20 +49,21 @@ const getData = () => {
                 <th>Email</th>
                 <th>Materia</th>
                 <th>Turma</th>
+                <th>Ação</th>
              </tr>
              </thead>
              <tbody>
-          {data?.map(professor => {
+          {data?.map((professor, index) => {
             return(
              <tr key={professor._id}>
-                <td>{professor._id}</td>
+                <td>{index + 1}</td>
                 <td>{professor.Nome}</td>
                 <td>{professor.Email}</td>
                 <td>{professor.Materia}</td>
                 <td>{professor.Turma}</td>
                 <td>
-                  <button onClick={() => handleDelete(professor._id)}>Deletar</button>
-                  <Link to={`/professor/adicionar/${professor._id}`}><button>Atualizar</button></Link>
+                  <Button variant='danger' onClick={() => handleDelete(professor._id)}><RiDeleteBin6Line/></Button>
+                  <Link to={`/professor/adicionar/${professor._id}`}><Button className='edit' variant='warning'><BiEditAlt/></Button></Link>
                 </td>
             </tr>
             )
@@ -66,7 +71,7 @@ const getData = () => {
             </tbody>
         </Table>
       
-      <Link to='/professor/adicionar'><button>Adicionar</button></Link>
+      <Link to='/professor/adicionar'><Button className='botao1' variant="success"><IoPersonAddSharp/> Adicionar</Button></Link>
     </div>
   )
 }

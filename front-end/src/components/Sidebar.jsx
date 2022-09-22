@@ -21,12 +21,11 @@ const Sidebar = () => {
                     <div className='logos-sidebar'>
                         <Link to='/' className='nav-logo'><span></span></Link>
                         <Link to='/turmas' className='nav-link'><img src="imgs/image 3.svg" alt="" />&nbsp;&nbsp;<span>TURMAS</span> </Link>
-                        <Link to='/listall' className='nav-link'><img src="imgs/image 4.svg" alt="" />&nbsp;&nbsp;<span>ESTUDANTES</span> </Link>
+                        <Link to='/alumno' className='nav-link'><img src="imgs/image 4.svg" alt="" />&nbsp;&nbsp;<span>ESTUDANTES</span> </Link>
                         <Link to='/professor' className='nav-link'><img src="imgs/pngwing 1.svg" alt="" />&nbsp;&nbsp;<span>PROFESSORES</span> </Link>
                     </div>
                 </nav>
             </aside>
-            {/* <h1>Content</h1> */}
         </main>
     )
 }
