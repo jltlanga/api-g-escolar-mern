@@ -8,6 +8,7 @@ const ListAlunos = () => {
     useEffect(() => {
         // Pega dados do bd
         //trocar banco de dados para mongodb
+        
         firebaseDB.child('Estudante').on('value', (snapshot) => {
             if (snapshot.val() != null) {
                 setData({ ...snapshot.val() })

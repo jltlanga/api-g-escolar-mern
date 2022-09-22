@@ -26,7 +26,9 @@ const Sidebar = () => {
                         <Link to='/professor' className='nav-link'><img src="imgs/pngwing 1.svg" alt="" />&nbsp;&nbsp;<span>PROFESSORES</span> </Link>
                         <Link to='/about' className='nav-link'><img id='icon-info' src="imgs/info-icon.svg" alt="" />&nbsp; &nbsp;<span>INFORMAÇÃO</span></Link>
                     </div>
-                    <Link to='/logout' className='nav-link'><img src="imgs/image 9.svg" alt="" />&nbsp;&nbsp;<span>SAIR</span> </Link>
+                    <div className='logos-sidebar'>
+                    <Link to='/logout' className='nav-link'><img src="imgs/image 9.svg" alt=" " />&nbsp; &nbsp;<span>SAIR</span> </Link>
+                    </div>
                 </nav>
             </aside>
             {/* <h1>Content</h1> */}
