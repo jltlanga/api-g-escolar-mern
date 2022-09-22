@@ -9,10 +9,6 @@ const initialState = {
   name: '',
   email: '',
   contact: '',
-  avai1: '',
-  aval2: '',
-  aval3: '',
-  media: '',
   status: '',
 }
 const AddUpdate = () => {
@@ -24,10 +20,6 @@ const AddUpdate = () => {
     name,
     email,
     contact,
-    aval1,
-    aval2,
-    aval3,
-    media,
     status
   } = state;
 
@@ -69,7 +61,7 @@ const AddUpdate = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!id) {
-      if (!name || !email || !contact || !aval1 || !aval2 || !aval3 || !media || !status) {
+      if (!name || !email || !contact || !status) {
         toast.error('Preencha todos campos, por favor!')
       } else {
         //adiciona os dados no bd cuja collaction-Name é Estudante
@@ -125,32 +117,6 @@ const AddUpdate = () => {
           id='contact'
           value={contact || ""}
           name='contact'
-          onChange={handleInputChange} />
-
-        <label htmlFor='avalicao'>Avaliações</label>
-        <input type="number" placeholder='Primeira avaliação...'
-          id='aval1'
-          value={aval1 || ""}
-          name='aval1'
-          onChange={handleInputChange} />
-
-        <input type="number" placeholder='Segunda avaliação...'
-          id='aval2'
-          value={aval2 || ""}
-          name='aval2'
-          onChange={handleInputChange} />
-
-        <input type="number" placeholder='Terceira avaliação...'
-          id='aval3'
-          value={aval3 || ""}
-          name='aval3'
-          onChange={handleInputChange} />
-
-        <label htmlFor='media'>Média</label>
-        <input type="number" placeholder='Média...'
-          id='media'
-          value={media || ""}
-          name='media'
           onChange={handleInputChange} />
 
         <label htmlFor='status'>Situação</label>

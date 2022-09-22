@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 import './turmas.css'
 
 const Turmas = () => {
-    const [turmasData, setTurmasData] = useState([])
+    const [turmasData, setTurmasData] = useState([]);
     const apiUrl = 'http://localhost:5000/'
 
     const getTurmas = () => {
@@ -18,7 +19,6 @@ const Turmas = () => {
 
     useEffect(() => {
         getTurmas();
-        console.log('get turmas', turmasData);
       }, [])
 
   return (
@@ -32,7 +32,9 @@ const Turmas = () => {
                   <Card.Text className='text-prof'>
                     Professor responsável: {turma.Professor}
                   </Card.Text>
+                  <Link to={`/matriculas/${turma.Id_Turma}`}>
                   <Button className='botao' variant="dark">Informações da turma</Button>
+                  </Link>
                 </Card.Body>
                 <Card.Footer className="text-muted">Quantidade de estudantes: 10</Card.Footer>
               </Card>

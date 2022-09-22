@@ -1,162 +1,72 @@
 import React, { useEffect, useState } from 'react'
-import firebaseDB from '../firebase';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './home.css';
-import { toast } from 'react-toastify';
-import { BsTrash, BsHouse } from "react-icons/bs";
-import { ImEyePlus } from "react-icons/im";
-import { FaEdit } from "react-icons/fa";
+import Table from 'react-bootstrap/Table';
+import axios from 'axios';
 
 const Home = () => {
-  const [data, setData] = useState({})
-  const [sort, setSort] = useState(false)
-  const [sortedData, setSortedData] = useState([])
+  const [data, setData] = useState([])
+  const [nomeP, setNomeP] = useState('');
+  const [emailP, setEmailP] = useState('');
+  const [materiaP, setMateriaP] = useState('');
+  const [turmaP, setTurmaP] = useState('');
+  const { id } = useParams();
 
   useEffect(() => {
-    // Pega dados do bd
-    firebaseDB.child('Estudante').on('value', (snapshot) => {
-      if (snapshot.val() != null) {
-        setData({ ...snapshot.val() })
-      } else {
-        setData({})
-      }
+    axios.get(`http://localhost:5000/professor/details`, {
+      Nome: nomeP,
+      Email: emailP,
+      Materia: materiaP,
+      Turma: turmaP
+    }).then((response) => {
+        setData(response.data);
     })
-    return () => {
-      setData({})
-    }
-  }, [])
+}, [])
 
-  const onDelete = (id) => {
-    if (window.confirm(`Tem certeza que deseja remover os dados do aluno?`)) {
-      //remove dados do bd
-      firebaseDB.child(`Estudante/${id}`).remove((err) => {
-        if (err) {
-          toast.error(err)
-        } else {
-          toast.success(`Dados do aluno foram removidos com sucesso!`)
-        }
-      });
-    }
-  };
+const handleDelete = (idP) => {
+  axios.delete('http://localhost:5000/professor/interest/' + idP)
+  .then(() => {getData();})
+}
 
-  //Ordena os dados de acordo com os campos disponiveis
-  const handleChange = (e) => {
-    setSort(true)
-    firebaseDB.child('Estudante').orderByChild(`${e.target.value}`).on('value', (snapshot) => {
-      let shortedData = [];
-      snapshot.forEach((snap) => {
-        shortedData.push(snap.val());
-      })
-      setSortedData(shortedData)
-    })
-  }
-  //Valida o btn redefinir a page Home
-  const handleReset = () => {
-    setSort(false);
-    firebaseDB.child('Estudante').on('value', (snapshot) => {
-      if (snapshot.val() != null) {
-        setData({ ...snapshot.val() })
-      } else {
-        setData({})
-      }
-    })
-
-    return () => {
-      setData({})
-    }
-  }
-
-  //filtra a situação dos alunos no bd
-  const filterData = (value) => {
-    firebaseDB.child('Estudante').orderByChild('status').equalTo(value).on('value', (snapshot) => {
-      if (snapshot.val()) {
-        setData(snapshot.val());
-      }
-    })
-  }
+const getData = () => {
+  axios.get('http://localhost:5000/professor/details/')
+  .then((getData) => {
+    setData(getData.data);
+  })
+}
 
   return (
-    <div style={{ marginTop: '150px' }}>
-      {/* cria estrutura da tabela para renderizar os dados trazidos de bd */}
-      <h1>Professor</h1>
-      <label htmlFor='sort'>Ordernar por:</label>
-      <select name='colValue' id='' className='dropdown' onChange={handleChange}>
-        <option value=''>Selecione a opção</option>
-        <option value='name'>Nome</option>
-        <option value='email'>Email</option>
-        <option value='contact'>Contato</option>
-      </select>
-
-      <label htmlFor="">Ordenar por situação:</label>
-      <button className='btn btn-active' onClick={() => filterData('Aprovado')}>Aprovado</button>
-      <button className='btn btn-inactive' onClick={() => filterData('Reprovado')}>Reprovado</button>
-      <button className="btn btn-reset" onClick={handleReset}><BsHouse /></button>
-
-      <table className="table-stayled">
-        <thead>
-          <tr>
-            <th style={{ textAlign: 'center' }}>ID</th>
-            <th style={{ textAlign: 'center' }}>Nome</th>
-            <th style={{ textAlign: 'center' }}>Email</th>
-            <th style={{ textAlign: 'center' }}>Contato</th>
-            <th style={{ textAlign: 'center' }}>Aval-1</th>
-            <th style={{ textAlign: 'center' }}>Aval-2</th>
-            <th style={{ textAlign: 'center' }}>Aval-3</th>
-            <th style={{ textAlign: 'center' }}>Média</th>
-            <th style={{ textAlign: 'center' }}>Situação</th>
-            {/* <th style={{ textAlign: 'center' }}>Action</th> */}
-            {!sort && <th style={{ textAlign: 'center' }}>Ação</th>}
-          </tr>
-        </thead>
-
-        {!sort && (
-          <tbody>
-            {/* mapping de dados um/um e adiciona-os na tabela de acordo */}
-            {Object.keys(data).map((id, index) => {
-              return (
-                <tr key={id}>
-                  <th>{index + 1}</th>
-                  <td>{data[id].name}</td>
-                  <td>{data[id].email}</td>
-                  <td>{data[id].contact}</td>
-                  <td>{data[id].status}</td>
-                  <td>
-                    <Link to={`/update/${id}`}>
-                      <button className='btn btn-edit'><FaEdit /></button>
-                    </Link>
-                    <Link to={`/view/${id}`}>
-                      <button className='btn btn-view'><ImEyePlus /></button>
-                    </Link>
-
-                    <button className='btn btn-delete'
-                      onClick={() => onDelete(id)}><BsTrash /></button>
-
-                  </td>
-                </tr>
-              )
+    <div className='contenedorP'>
+            <Table responsive>
+             <thead>
+             <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Materia</th>
+                <th>Turma</th>
+             </tr>
+             </thead>
+             <tbody>
+          {data?.map(professor => {
+            return(
+             <tr key={professor._id}>
+                <td>{professor._id}</td>
+                <td>{professor.Nome}</td>
+                <td>{professor.Email}</td>
+                <td>{professor.Materia}</td>
+                <td>{professor.Turma}</td>
+                <td>
+                  <button onClick={() => handleDelete(professor._id)}>Deletar</button>
+                  <Link to={`/professor/adicionar/${professor._id}`}><button>Atualizar</button></Link>
+                </td>
+            </tr>
+            )
             })}
-
-          </tbody>
-        )}
-
-        {sort && (
-          <tbody>
-            {sortedData.map((item, index) => {
-              return (
-                <tr key={index}>
-                  <th>{index + 1}</th>
-                  <td>{item.name}</td>
-                  <td>{item.email}</td>
-                  <td>{item.contact}</td>
-                  <td>{item.status}</td>
-                </tr>
-              )
-
-            })}
-          </tbody>
-        )}
-      </table>
-
+            </tbody>
+        </Table>
+      
+      <Link to='/professor/adicionar'><button>Adicionar</button></Link>
     </div>
   )
 }

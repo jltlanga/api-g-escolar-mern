@@ -14,6 +14,7 @@ import Turmas from './pages/Turmas';
 // import { CartProvider } from 'react-use-cart';
 import ListAlunos from './pages/ListAlunos';
 import TableMatriculas from './pages/Matricula';
+import CreateP from './pages/Professores/create-updateP';
 function App() {
   return (
     
@@ -27,9 +28,11 @@ function App() {
           {/* <Route exact path='/' element={<Authentication />} /> */}
           <Route path='/turmas' element={<Turmas />} />
           <Route exact path='/professor' element={<Home />} />
+          <Route path='/professor/adicionar' element={<CreateP />} />
+          <Route path='/professor/adicionar/:id' element={<CreateP />} />
           <Route path='/add' element={<AddUpdate />} />
           <Route path='/update/:id' element={<AddUpdate />} />
-          <Route path='matriculas' element={<TableMatriculas />} />
+          <Route path='/matriculas/:id' element={<TableMatriculas />} />
           <Route path='/view/:id' element={<View />} />
           <Route path='/listall' element={<ListAlunos />} />
           <Route path='/search' element={<Search />} />
