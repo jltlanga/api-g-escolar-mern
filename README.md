@@ -15,10 +15,10 @@
 
 Como pode ver o projeto possui dois repositórios um de server side e outro de client side. Para ambos você precisa instalar o node_modules dentro da raíz do repositório individualmente. Tal que:
 
-* dentro da pasta front-end: estes dois comandos instala e sobe a pagina front ao servidos
+* dentro da pasta front-end: estes dois comandos instalam e sobe a pagina front ao servidos, respectivamente
 ### `npm install`;
 ### `npm start`
 
-*dentro da pasta back-end: estes comandos instalam o node_modulos e sobe o servidor
+*dentro da pasta back-end: estes comandos instalam o node_modulos e sobe o servidor, respectivamente
 ### `npm init`
 ### `npm run nodemon`
