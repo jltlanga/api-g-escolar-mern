@@ -2,7 +2,7 @@
 # GESTÃO ESCOLAR - React App
 
 ## Breve Resumo
-* Este consiste em um projeto de gestão escolar desenvolvida em ambiente colaborativo, com auxílio de GitHub. 
+* Este projeto consiste em um projeto de gestão escolar desenvolvida em ambiente colaborativo, com auxílio de GitHub. 
 
 * * As tecncologias MERN - Mongodb, Express, ReactJS e NodeJS foram utilizadas para desenvolver esta aplicação. Recorreu-se também na ferramente de estilização CSS.
 
