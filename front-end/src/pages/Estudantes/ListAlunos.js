@@ -17,7 +17,11 @@ const ListAlunos = () => {
   const [materiaA, setMateriaA] = useState('');
   const [turmaA, setTurmaA] = useState('');
   const [matricular, setMatricular] = useState('');
-  const [turmas, setTurmas] = useState([]);
+  const [tur, setTur] = useState([]);
+  const [alumnoMatricular, setAlumnoMatricular] = useState('');
+  const [turmaMatricular, setTurmaMatricular] = useState('');
+
+
 
   const { id } = useParams();
 
@@ -29,7 +33,12 @@ const ListAlunos = () => {
       Sessao: turmaA
     }).then((response) => {
         setDataA(response.data);
-    })
+    });
+
+    axios.get(`http://localhost:5000/Turma/details`, {}).then((response) => {
+      setTur(response.data);
+    });
+
 }, [])
 
 const handleDelete = (idA) => {
@@ -41,22 +50,21 @@ const getData = () => {
   axios.get('http://localhost:5000/alumno/details/')
   .then((getData) => {
     setDataA(getData.data);
-  })
+  });
 }
 
 const fillMatricular = (id) => {
   setMatricular(id);
+  setAlumnoMatricular(id);
 }
 
-useEffect(() => {
-  axios.get(`http://localhost:5000/Turma/details`, {}).then((response) => {
-      setTurmas(response.data);
-      console.log(turmas);
+const handleMatricular = (e) => {
+  e.preventDefault();
+  axios.post('http://localhost:5000/matricula/interest/', {
+    Turma: turmaMatricular,
+    Estudante: alumnoMatricular,
+    Estado: 'Em curso'
   })
-}, [])
-
-const handleMatricular = (id) => {
-  //post matricular
 }
 
   return (
@@ -95,19 +103,27 @@ const handleMatricular = (id) => {
       <Link to='/alumno/adicionar'><Button className='botao1' variant="success"><IoPersonAddSharp/>&nbsp; Adicionar</Button></Link>
 
       {matricular && (
-        <form onSubmit={handleMatricular}>
+        <Form onSubmit={handleMatricular}>
           <Form.Group className="mb-3">
-            <Form.Label>Disabled input</Form.Label>
-            <Form.Control placeholder="Disabled input" value={matricular} disabled />
+            <Form.Label>ID do Estudante</Form.Label>
+            <Form.Control placeholder="Disabled input" value={matricular} onLoadCapture={(e) => setAlumnoMatricular(e.target.value)} disabled />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Disabled select menu</Form.Label>
-            <Form.Select disabled>
-              <option value={'id'}>1 - español</option>
+            <Form.Label> Escolha a Materia</Form.Label>
+            <Form.Select onChange={(e) => setTurmaMatricular(e.target.value)}>
+              <option>Selecionar turma</option>
+              {tur.map((tur)=>{
+                return(
+                  <option key={tur.Id_Turma} value={tur.Id_Turma}>{tur.Nome} - {tur.Secao}</option>
+                )
+              })
+              }
             </Form.Select>
           </Form.Group>
-          
-        </form>
+          <Button variant="primary" type="submit">
+              Matricular
+          </Button>
+        </Form>
       )}
        
     </div>
