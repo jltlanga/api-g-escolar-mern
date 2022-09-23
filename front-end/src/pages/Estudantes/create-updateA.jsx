@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'  
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -34,6 +34,8 @@ function CreateA() {
       Turma: materiaA,
       Sessao: turmaA
     });
+
+    console.log(data);
 
     setNomeA('');
     setEmailA('');

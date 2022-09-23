@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams, useNa } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
@@ -10,19 +10,9 @@ import axios from 'axios';
 
 const Home = () => {
   const [data, setData] = useState([])
-  const [nomeP, setNomeP] = useState('');
-  const [emailP, setEmailP] = useState('');
-  const [materiaP, setMateriaP] = useState('');
-  const [turmaP, setTurmaP] = useState('');
-  const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/professor/details`, {
-      Nome: nomeP,
-      Email: emailP,
-      Materia: materiaP,
-      Turma: turmaP
-    }).then((response) => {
+    axios.get(`http://localhost:5000/professor/details`).then((response) => {
         setData(response.data);
     })
 }, [])

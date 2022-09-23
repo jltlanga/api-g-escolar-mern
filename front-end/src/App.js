@@ -5,7 +5,6 @@ import Home from './pages/Professores/Home';
 import Sidebar from './components/Sidebar';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import View from './pages/View';
 import Header from './components/Header';
 import Turmas from './pages/Turmas/Turmas';
 import TableMatriculas from './pages/Turmas/Matricula';
@@ -30,7 +29,6 @@ function App() {
           <Route path='/alumno/adicionar' element={<CreateA />} />
           <Route path='/alumno/adicionar/:id' element={<CreateA />} />
           <Route path='/matriculas/:id' element={<TableMatriculas />} />
-          <Route path='/view/:id' element={<View />} />
           <Route path='/alumno' element={<ListAlunos />} />
           
         </Routes>

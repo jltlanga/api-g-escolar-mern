@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './listAlunos.css';
 import Button from 'react-bootstrap/Button';
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -12,26 +12,13 @@ import axios from 'axios';
 
 const ListAlunos = () => {
   const [dataA, setDataA] = useState([])
-  const [nomeA, setNomeA] = useState('');
-  const [emailA, setEmailA] = useState('');
-  const [materiaA, setMateriaA] = useState('');
-  const [turmaA, setTurmaA] = useState('');
   const [matricular, setMatricular] = useState('');
   const [tur, setTur] = useState([]);
   const [alumnoMatricular, setAlumnoMatricular] = useState('');
   const [turmaMatricular, setTurmaMatricular] = useState('');
 
-
-
-  const { id } = useParams();
-
   useEffect(() => {
-    axios.get(`http://localhost:5000/alumno/details`, {
-      Nome: nomeA,
-      Email: emailA,
-      Turma: materiaA,
-      Sessao: turmaA
-    }).then((response) => {
+    axios.get('http://localhost:5000/alumno/details').then((response) => {
         setDataA(response.data);
     });
 

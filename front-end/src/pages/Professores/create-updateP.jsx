@@ -23,6 +23,7 @@ function CreateP() {
         setMateriaP(response.data[0].Materia);
         setTurmaP(response.data[0].Turma);
       })
+      console.log(professorData);
     }
 }, [])
 
